@@ -1,0 +1,319 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-color: #3b82f6;
+    --border-color: #333;
+    --input-bg: #2a2a2a;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    /* Mobile first constraint */
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Controls (Search & Filter) */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus {
+    border-color: var(--accent-color);
+}
+
+/* Custom Select (Filter) */
+.filter-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.custom-select {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    position: relative;
+    user-select: none;
+}
+
+.options-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-top: 5px;
+    z-index: 10;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.options-container.hidden {
+    display: none;
+}
+
+.option {
+    padding: 10px 15px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.option:hover {
+    background-color: var(--input-bg);
+}
+
+/* Table / List */
+.table-container {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.table-header,
+.ticket-item {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    /* Default Mobile: Name, Email */
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.table-header {
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.ticket-item {
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+.ticket-item:last-child {
+    border-bottom: none;
+}
+
+.ticket-item:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.col.name,
+.ticket-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.col.email,
+.ticket-email {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Mobile: Status Hidden */
+.col.status,
+.ticket-status {
+    display: none;
+}
+
+/* Status Indicators */
+.ticket-status {
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-active {
+    color: var(--success-color);
+}
+
+.dot-active {
+    background-color: var(--success-color);
+}
+
+.status-open {
+    color: var(--accent-color);
+}
+
+.dot-open {
+    background-color: var(--accent-color);
+}
+
+.status-inactive {
+    color: var(--text-secondary);
+}
+
+.dot-inactive {
+    background-color: var(--text-secondary);
+}
+
+.status-closed {
+    color: var(--danger-color);
+}
+
+.dot-closed {
+    background-color: var(--danger-color);
+}
+
+.footer {
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Tablet (approx 600px+) */
+@media (min-width: 600px) {
+    .container {
+        max-width: 800px;
+    }
+
+    .controls {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .search-wrapper {
+        flex: 2;
+        margin-right: 1rem;
+    }
+
+    .filter-wrapper {
+        flex: 1;
+        width: auto;
+    }
+
+    .table-header,
+    .ticket-item {
+        grid-template-columns: 1.5fr 2fr 100px;
+        /* Name, Email, Status */
+    }
+
+    .col.status,
+    .ticket-status {
+        display: flex;
+        /* Show status on tablet/desktop */
+        justify-content: flex-start;
+        /* Aligns with text normally */
+    }
+
+    /* Image 2 shows status dot left of text */
+}
+
+/* Desktop (approx 1024px+) */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1000px;
+    }
+
+    .table-container {
+        padding: 0;
+        /* Keep consistent */
+    }
+
+    .table-header,
+    .ticket-item {
+        grid-template-columns: 1fr 2fr 1fr;
+        /* Adjust ratios for wider screen */
+    }
+}
