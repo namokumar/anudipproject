@@ -1,0 +1,51 @@
+.section {
+    padding: 4rem 1.5rem;
+    background-color: var(--background-dark);
+    text-align: center;
+}
+
+.headline {
+    color: #94a3b8;
+    /* text-slate-400 */
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2.5rem;
+}
+
+.logoGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    /* gap-12 */
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+.logoItem {
+    opacity: 0.4;
+    transition: opacity 0.3s;
+    filter: grayscale(100%);
+}
+
+.logoItem:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+.logoImage {
+    height: 2rem;
+    /* h-8 */
+    width: auto;
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .logoGrid {
+        gap: 5rem;
+        /* gap-20 */
+    }
+}
