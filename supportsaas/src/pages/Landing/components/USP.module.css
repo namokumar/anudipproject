@@ -1,0 +1,130 @@
+.section {
+    padding: 8rem 0;
+    background-color: var(--background-dark);
+    text-align: center;
+}
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.label {
+    color: var(--primary-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.headline {
+    font-size: 3rem;
+    /* text-5xl */
+    font-weight: 900;
+    /* font-black */
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 4rem;
+    max-width: 60rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 56rem;
+    margin: 0 auto;
+}
+
+.statCard {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(37, 175, 244, 0.05));
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.statCard:hover {
+    transform: translateY(-12px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(37, 175, 244, 0.08));
+    border-color: rgba(37, 175, 244, 0.3);
+    box-shadow:
+        0 20px 40px rgba(37, 175, 244, 0.2),
+        0 0 60px rgba(37, 175, 244, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.statValue {
+    font-size: 3.75rem;
+    font-weight: 900;
+    color: white;
+    display: block;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+
+.statCard:hover .statValue {
+    background: linear-gradient(90deg,
+            #1e3a8a 0%,
+            #3b82f6 15%,
+            #06b6d4 30%,
+            #8b5cf6 50%,
+            #d946ef 70%,
+            #ec4899 85%,
+            #be185d 100%);
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-position: 100% 0;
+    animation: appleGradient 4s ease-in-out infinite;
+}
+
+@keyframes appleGradient {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.statLabel {
+    color: #94a3b8;
+    font-size: 1.125rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.statCard:hover .statLabel {
+    color: #cbd5e1;
+}
+
+@media (min-width: 768px) {
+    .headline {
+        font-size: 4.5rem;
+        /* text-7xl */
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

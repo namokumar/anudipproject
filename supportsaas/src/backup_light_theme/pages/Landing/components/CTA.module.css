@@ -1,0 +1,110 @@
+.ctaSection {
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary-color);
+}
+
+.bgOverlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 0;
+}
+
+.bgPattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.container {
+    max-width: 56rem;
+    /* 4xl */
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.headline {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+}
+
+.subheadline {
+    font-size: 1.25rem;
+    color: #E0E7FF;
+    /* Indigo 100 */
+    margin-bottom: 2.5rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buttonGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.primaryButton {
+    background-color: var(--white);
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s, background-color 0.2s;
+    display: inline-block;
+}
+
+.primaryButton:hover {
+    background-color: var(--light-color);
+    transform: translateY(-2px);
+}
+
+.secondaryButton {
+    background-color: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    transition: background-color 0.2s;
+    display: inline-block;
+}
+
+.secondaryButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.disclaimer {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: #C7D2FE;
+    /* Indigo 200 */
+}
+
+@media (min-width: 640px) {
+    .buttonGroup {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 768px) {
+    .headline {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+    }
+}

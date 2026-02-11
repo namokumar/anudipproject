@@ -1,0 +1,140 @@
+.featuresSection {
+    padding: 6rem 0;
+    /* py-24 */
+    background-color: var(--background-dark);
+    position: relative;
+}
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+    /* mb-16 */
+}
+
+.headline {
+    color: #ffffff;
+    font-size: 2.25rem;
+    /* text-4xl */
+    font-weight: 900;
+    /* font-black */
+    letter-spacing: -0.025em;
+    /* tracking-tight */
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: #94a3b8;
+    /* text-slate-400 */
+    font-size: 1.125rem;
+    /* text-lg */
+    max-width: 36rem;
+    /* max-w-xl */
+}
+
+.exploreLink {
+    color: var(--primary-color);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: text-decoration 0.2s;
+}
+
+.exploreLink:hover {
+    text-decoration: underline;
+}
+
+.headerRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    /* Added spacing between header and cards */
+}
+
+.headerContent {
+    max-width: 36rem;
+    /* max-w-xl */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    /* gap-8 */
+}
+
+/* Feature Card */
+.card {
+    background-color: rgba(22, 27, 34, 0.5);
+    /* bg-card-dark/50 */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* border-white/5 */
+    padding: 2rem;
+    border-radius: 0.75rem;
+    /* rounded-xl */
+    transition: all 0.3s;
+}
+
+.card:hover {
+    background-color: var(--card-dark);
+    border-color: rgba(37, 175, 244, 0.3);
+    /* border-primary/30 */
+}
+
+.iconWrapper {
+    width: 3.5rem;
+    /* w-14 */
+    height: 3.5rem;
+    /* h-14 */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    background-color: rgba(37, 175, 244, 0.1);
+    /* bg-primary/10 */
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.card:hover .iconWrapper {
+    transform: scale(1.1);
+}
+
+.cardTitle {
+    color: #ffffff;
+    font-size: 1.25rem;
+    /* text-xl */
+    font-weight: 700;
+    /* font-bold */
+    margin-bottom: 0.75rem;
+}
+
+.cardDescription {
+    color: #94a3b8;
+    /* text-slate-400 */
+    line-height: 1.625;
+    /* leading-relaxed */
+}
+
+@media (min-width: 768px) {
+    .headerRow {
+        flex-direction: row;
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

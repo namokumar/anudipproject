@@ -1,0 +1,156 @@
+.ctaSection {
+    padding: 6rem 0;
+    /* py-24 */
+    position: relative;
+}
+
+.container {
+    max-width: 64rem;
+    /* max-w-5xl */
+    margin: 0 auto;
+}
+
+.card {
+    position: relative;
+    background: linear-gradient(to bottom right, rgba(37, 175, 244, 0.2), rgba(45, 27, 78, 0.4));
+    /* from-primary/20 to-accent-purple/40 */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    /* rounded-3xl */
+    padding: 3rem;
+    /* p-12 */
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Blurred Orbs */
+.orb1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -5rem;
+    margin-right: -5rem;
+    width: 16rem;
+    /* w-64 */
+    height: 16rem;
+    /* h-64 */
+    background-color: var(--primary-color);
+    border-radius: 9999px;
+    filter: blur(100px);
+    opacity: 0.2;
+}
+
+.orb2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: -5rem;
+    margin-left: -5rem;
+    width: 16rem;
+    /* w-64 */
+    height: 16rem;
+    /* h-64 */
+    background-color: #9333ea;
+    /* purple-600 */
+    border-radius: 9999px;
+    filter: blur(100px);
+    opacity: 0.2;
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+}
+
+.headline {
+    color: #ffffff;
+    font-size: 2.25rem;
+    /* text-4xl */
+    font-weight: 900;
+    /* font-black */
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+}
+
+.subheadline {
+    color: #cbd5e1;
+    /* text-slate-300 */
+    font-size: 1.125rem;
+    /* text-lg */
+    max-width: 42rem;
+    /* max-w-2xl */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
+    line-height: 1.625;
+}
+
+.buttonGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.primaryButton {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+    padding: 1.25rem 2.5rem;
+    border-radius: 0.75rem;
+    /* rounded-xl */
+    font-size: 1.25rem;
+    /* text-xl */
+    font-weight: 900;
+    /* font-black */
+    box-shadow: 0 20px 25px -5px rgba(37, 175, 244, 0.3);
+    transition: background-color 0.2s;
+}
+
+.primaryButton:hover {
+    background-color: var(--primary-hover);
+}
+
+.secondaryButton {
+    width: 100%;
+    color: #ffffff;
+    padding: 1.25rem 2.5rem;
+    font-size: 1.125rem;
+    /* text-lg */
+    font-weight: 700;
+    transition: color 0.2s;
+}
+
+.secondaryButton:hover {
+    color: var(--primary-color);
+}
+
+@media (min-width: 640px) {
+    .buttonGroup {
+        flex-direction: row;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        width: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .card {
+        padding: 5rem;
+        /* md:p-20 */
+    }
+
+    .headline {
+        font-size: 3rem;
+        /* md:text-5xl */
+    }
+
+    .subheadline {
+        font-size: 1.25rem;
+        /* md:text-xl */
+    }
+}

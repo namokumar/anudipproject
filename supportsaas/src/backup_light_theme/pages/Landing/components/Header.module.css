@@ -1,0 +1,135 @@
+.header {
+    position: fixed;
+    width: 100%;
+    z-index: 50;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    top: 0;
+}
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.navWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.navLinks {
+    display: flex;
+    gap: 2rem;
+}
+
+.navLinks a {
+    color: var(--text-muted);
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.navLinks a:hover {
+    color: var(--primary-color);
+}
+
+.authButtons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.loginLink {
+    color: var(--text-muted);
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.loginLink:hover {
+    color: var(--primary-color);
+}
+
+.signupButton {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.signupButton:hover {
+    background-color: var(--primary-hover);
+}
+
+.mobileMenuButton {
+    display: none;
+    color: var(--text-muted);
+}
+
+.mobileMenuButton:hover {
+    color: var(--primary-color);
+}
+
+/* Mobile Menu Styles */
+.mobileMenu {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem;
+}
+
+.mobileNavLink {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    color: var(--text-main);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.mobileNavLink:hover {
+    background-color: var(--light-color);
+    color: var(--primary-color);
+}
+
+.mobileAuthButtons {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.mobileSignupButton {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+
+    .navLinks,
+    .authButtons {
+        display: none;
+    }
+
+    .mobileMenuButton {
+        display: block;
+    }
+}

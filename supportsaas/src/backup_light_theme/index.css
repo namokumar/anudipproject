@@ -1,0 +1,88 @@
+:root {
+  /* Color Palette */
+  --primary-color: #4F46E5;
+  /* Indigo 600 */
+  --primary-hover: #4338ca;
+  /* Indigo 700 */
+  --secondary-color: #10B981;
+  /* Emerald 500 */
+  --dark-color: #1F2937;
+  /* Gray 800 */
+  --light-color: #F3F4F6;
+  /* Gray 100 */
+  --white: #ffffff;
+  --text-main: #111827;
+  /* Gray 900 */
+  --text-muted: #4B5563;
+  /* Gray 600 */
+  --border-color: #E5E7EB;
+  /* Gray 200 */
+
+  /* Dark Mode Colors (if needed later, keeping simple for now) */
+  --bg-body: #ffffff;
+  --bg-surface: #ffffff;
+
+  /* Typography */
+  --font-family-sans: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  /* Spacing */
+  --container-max-width: 1280px;
+  --header-height: 4rem;
+}
+
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  line-height: 1.5;
+  color: var(--text-main);
+  background-color: var(--bg-body);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Utilities */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
