@@ -1,9 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Close mobile menu when window is resized to desktop view
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -48,6 +60,12 @@ const Header = () => {
           <a href="#" className={styles.mobileNavLink}>Integrations</a>
           <a href="#" className={styles.mobileNavLink}>Pricing</a>
           <a href="#" className={styles.mobileNavLink}>Docs</a>
+          <div className={styles.mobileActions}>
+            <Link to="/login" className={styles.mobileLoginButton}>Login</Link>
+            <Link to="/signup" className={styles.mobileSignupButton}>
+              Sign Up Free
+            </Link>
+          </div>
         </div>
       )}
     </header>
