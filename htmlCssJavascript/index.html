@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A premium CRM dashboard for managing support tickets.">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Remix Icon for Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Support Tickets</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Support Tickets</h1>
+            <p class="subtitle">Manage and track your client requests with ease.</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-wrapper">
+                <i class="ri-search-line search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search client name or email..." autocomplete="off">
+            </div>
+            
+            <div class="filter-wrapper">
+                <div class="custom-select" id="statusFilter">
+                    <span class="selected-option">All Status</span>
+                    <i class="ri-arrow-down-s-fill arrow-icon"></i>
+                    <div class="options-container hidden">
+                        <div class="option" data-value="All">All Status</div>
+                        <div class="option" data-value="Active">Active</div>
+                        <div class="option" data-value="Inactive">Inactive</div>
+                        <div class="option" data-value="Open">Open</div>
+                        <div class="option" data-value="Closed">Closed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header">
+                <div class="col name">NAME</div>
+                <div class="col email">EMAIL</div>
+                <div class="col status">STATUS</div>
+            </div>
+            <div class="table-body" id="ticketList">
+                <!-- Tickets will be injected here by JS -->
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>PREMIUM CRM DASHBOARD V1.0</p>
+        </footer>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
