@@ -69,9 +69,7 @@
 .loginButton {
     display: none;
     font-size: 0.875rem;
-    /* text-sm */
     font-weight: 700;
-    /* font-bold */
     color: #ffffff;
     padding: 0.5rem 1.25rem;
     transition: color 0.2s;
@@ -82,12 +80,12 @@
 }
 
 .signupButton {
+    display: none;
+    /* Hidden on mobile */
     background-color: var(--primary-color);
     color: var(--background-dark);
     font-size: 0.875rem;
-    /* text-sm */
     font-weight: 700;
-    /* font-bold */
     padding: 0.625rem 1.5rem;
     border-radius: 0.5rem;
     box-shadow: 0 10px 15px -3px rgba(37, 175, 244, 0.2);
@@ -101,7 +99,6 @@
 /* Mobile Menu Button (Hamburger) */
 .mobileMenuButton {
     display: flex;
-    /* Visible on mobile */
     color: #ffffff;
 }
 
@@ -123,23 +120,71 @@
     font-size: 1rem;
     font-weight: 600;
     padding: 0.5rem 0;
+    transition: color 0.2s;
 }
 
-@media (min-width: 640px) {
-    .loginButton {
-        display: block;
-    }
+.mobileNavLink:hover {
+    color: var(--primary-color);
+}
+
+.mobileActions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobileLoginButton {
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.2s;
+}
+
+.mobileLoginButton:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary-color);
+}
+
+.mobileSignupButton {
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+    font-size: 0.875rem;
+    font-weight: 700;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(37, 175, 244, 0.2);
+    transition: background-color 0.2s;
+}
+
+.mobileSignupButton:hover {
+    background-color: var(--primary-hover);
 }
 
 @media (min-width: 768px) {
     .nav {
         display: flex;
         gap: 2.5rem;
-        /* gap-10 */
+    }
+
+    .loginButton {
+        display: block;
+        /* Show Login on desktop */
+    }
+
+    .signupButton {
+        display: block;
+        /* Show on desktop */
     }
 
     .mobileMenuButton {
         display: none;
-        /* Hidden on desktop */
     }
 }

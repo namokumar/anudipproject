@@ -1,0 +1,441 @@
+.page {
+    min-height: 100vh;
+    background-color: var(--background-dark);
+    position: relative;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Abstract Background Pattern */
+.backgroundPattern {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.blob1 {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 40%;
+    height: 40%;
+    background: var(--primary-color);
+    opacity: 0.2;
+    border-radius: 50%;
+    filter: blur(120px);
+}
+
+.blob2 {
+    position: absolute;
+    bottom: -10%;
+    right: -10%;
+    width: 30%;
+    height: 30%;
+    background: var(--primary-color);
+    opacity: 0.1;
+    border-radius: 50%;
+    filter: blur(100px);
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.logoWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logoIcon {
+    color: var(--primary-color);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoText {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+}
+
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.helpText {
+    display: none;
+    font-size: 0.875rem;
+    color: #94a3b8;
+}
+
+.contactButton {
+    padding: 0.625rem 1rem;
+    background-color: rgba(37, 175, 244, 0.1);
+    color: var(--primary-color);
+    border: 1px solid rgba(37, 175, 244, 0.2);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.contactButton:hover {
+    background-color: rgba(37, 175, 244, 0.2);
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.loginWrapper {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Login Card */
+.loginCard {
+    width: 100%;
+    background-color: rgba(27, 35, 39, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.cardHeader {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-size: 1.875rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 0.875rem;
+    color: #94a3b8;
+}
+
+/* Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #cbd5e1;
+    margin-left: 0.25rem;
+}
+
+.labelRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0.25rem;
+}
+
+.forgotLink {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.forgotLink:hover {
+    text-decoration: underline;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 0.75rem;
+    transition: all 0.3s;
+}
+
+.inputWrapper:focus-within {
+    box-shadow: 0 0 0 2px rgba(37, 175, 244, 0.2), 0 0 15px rgba(37, 175, 244, 0.1);
+}
+
+.inputIcon {
+    position: absolute;
+    left: 1rem;
+    color: #64748b;
+    font-size: 1.25rem;
+    pointer-events: none;
+}
+
+.input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    background-color: rgba(17, 22, 24, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.input::placeholder {
+    color: #475569;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: rgba(17, 22, 24, 1);
+}
+
+.togglePassword {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.togglePassword:hover {
+    color: var(--primary-color);
+}
+
+.togglePassword .material-symbols-outlined {
+    font-size: 1.25rem;
+}
+
+/* Remember Me */
+.rememberMe {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 0.25rem;
+}
+
+.checkbox {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(15, 23, 42, 0.8);
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.checkboxLabel {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    cursor: pointer;
+}
+
+/* Submit Button */
+.submitButton {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: #0a0a0a;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    box-shadow: 0 10px 25px rgba(37, 175, 244, 0.2);
+    transition: all 0.2s;
+}
+
+.submitButton:hover {
+    filter: brightness(1.1);
+}
+
+.submitButton:active {
+    transform: scale(0.98);
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0 1.5rem;
+}
+
+.dividerLine {
+    flex: 1;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dividerText {
+    font-size: 0.75rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+/* Social Buttons */
+.socialButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.socialButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.socialButton:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.googleIcon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.socialButton .material-symbols-outlined {
+    font-size: 1.125rem;
+}
+
+/* Signup Prompt */
+.signupPrompt {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #94a3b8;
+}
+
+.signupLink {
+    color: var(--primary-color);
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 0.25rem;
+    transition: all 0.2s;
+}
+
+.signupLink:hover {
+    text-decoration: underline;
+}
+
+/* Status */
+.status {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.5;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+.statusDot {
+    width: 0.375rem;
+    height: 0.375rem;
+    background-color: #22c55e;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+    .helpText {
+        display: inline;
+    }
+
+    .header {
+        padding: 1rem 2.5rem;
+    }
+
+    .loginCard {
+        padding: 2.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .main {
+        padding: 3rem 1rem;
+    }
+}
