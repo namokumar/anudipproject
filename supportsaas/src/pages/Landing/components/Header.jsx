@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../../contexts/AuthContext';
 import styles from './Header.module.css';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, loading } = useAuth();
 
   // Close mobile menu when window is resized to desktop view
   useEffect(() => {
@@ -39,10 +41,23 @@ const Header = () => {
         </nav>
 
         <div className={styles.actions}>
-          <Link to="/login" className={styles.loginButton}>Login</Link>
-          <Link to="/signup" className={styles.signupButton}>
-            Sign Up Free
-          </Link>
+          {!loading && user ? (
+            /* Authenticated: show Dashboard button */
+            <Link to="/dashboard" className={styles.dashboardButton}>
+              <span className="material-symbols-outlined" style={{ fontSize: '1.1rem', verticalAlign: 'middle', marginRight: '0.35rem' }}>
+                dashboard
+              </span>
+              Dashboard
+            </Link>
+          ) : (
+            /* Guest: show Login + Sign Up */
+            <>
+              <Link to="/login" className={styles.loginButton}>Login</Link>
+              <Link to="/signup" className={styles.signupButton}>
+                Sign Up Free
+              </Link>
+            </>
+          )}
            <button 
             className={styles.mobileMenuButton} 
             onClick={() => setIsOpen(!isOpen)}
@@ -61,10 +76,18 @@ const Header = () => {
           <a href="#" className={styles.mobileNavLink}>Pricing</a>
           <a href="#" className={styles.mobileNavLink}>Docs</a>
           <div className={styles.mobileActions}>
-            <Link to="/login" className={styles.mobileLoginButton}>Login</Link>
-            <Link to="/signup" className={styles.mobileSignupButton}>
-              Sign Up Free
-            </Link>
+            {!loading && user ? (
+              <Link to="/dashboard" className={styles.mobileSignupButton} onClick={() => setIsOpen(false)}>
+                Dashboard
+              </Link>
+            ) : (
+              <>
+                <Link to="/login" className={styles.mobileLoginButton} onClick={() => setIsOpen(false)}>Login</Link>
+                <Link to="/signup" className={styles.mobileSignupButton} onClick={() => setIsOpen(false)}>
+                  Sign Up Free
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}

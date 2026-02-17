@@ -1,19 +1,98 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { supabase } from '../../lib/supabase';
+import { validateEmail } from '../../utils/validation';
+import { checkRateLimit, recordAttempt, resetAttempts } from '../../utils/rateLimiter';
 import Footer from '../Landing/components/Footer';
 import styles from './Login.module.css';
 
+const RATE_LIMIT_KEY = 'login';
+
 const Login = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const [countdown, setCountdown] = useState(0);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle login logic here
-    console.log('Login attempt:', { email, password, rememberMe });
+  // Countdown timer for rate limiting
+  const startCountdown = (seconds) => {
+    setCountdown(seconds);
+    const interval = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    // --- Rate limit check ---
+    const rateCheck = checkRateLimit(RATE_LIMIT_KEY);
+    if (!rateCheck.allowed) {
+      setError(`Too many failed attempts. Please wait ${rateCheck.remainingSeconds}s before trying again.`);
+      if (countdown === 0) startCountdown(rateCheck.remainingSeconds);
+      return;
+    }
+
+    // --- Email validation ---
+    const emailCheck = validateEmail(email);
+    if (!emailCheck.valid) {
+      setError(emailCheck.error);
+      return;
+    }
+
+    // --- Password presence check ---
+    if (!password || password.length < 1) {
+      setError('Password is required.');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const { data, error: loginError } = await supabase.auth.signInWithPassword({
+        email: email.trim().toLowerCase(),
+        password,
+      });
+
+      if (loginError) {
+        // Record failed attempt for rate limiting
+        recordAttempt(RATE_LIMIT_KEY);
+
+        // Check if now locked out
+        const postCheck = checkRateLimit(RATE_LIMIT_KEY);
+        if (!postCheck.allowed) {
+          startCountdown(postCheck.remainingSeconds);
+          throw new Error(`Too many failed attempts. Please wait ${postCheck.remainingSeconds}s before trying again.`);
+        }
+
+        // Generic error message — don't reveal whether email exists
+        throw new Error('Invalid email or password. Please try again.');
+      }
+
+      if (data.user) {
+        // Reset rate limiter on success
+        resetAttempts(RATE_LIMIT_KEY);
+        navigate('/dashboard');
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const isLocked = countdown > 0;
 
   return (
     <div className={styles.page}>
@@ -48,7 +127,8 @@ const Login = () => {
                 <p className={styles.subtitle}>Log in to manage your support tickets</p>
               </div>
 
-              <form className={styles.form} onSubmit={handleSubmit}>
+              <form className={styles.form} onSubmit={handleSubmit} noValidate>
+                {error && <div className={styles.errorMessage}>{error}</div>}
                 {/* Email Field */}
                 <div className={styles.formGroup}>
                   <label className={styles.label}>Email Address</label>
@@ -61,6 +141,8 @@ const Login = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
+                      autoComplete="email"
+                      maxLength={254}
                     />
                   </div>
                 </div>
@@ -82,6 +164,8 @@ const Login = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
+                      autoComplete="current-password"
+                      maxLength={128}
                     />
                     <button
                       type="button"
@@ -110,8 +194,16 @@ const Login = () => {
                 </div>
 
                 {/* Sign In Button */}
-                <button type="submit" className={styles.submitButton}>
-                  Sign In
+                <button
+                  type="submit"
+                  className={styles.submitButton}
+                  disabled={loading || isLocked}
+                >
+                  {isLocked
+                    ? `Locked Out (${countdown}s)`
+                    : loading
+                      ? 'Signing In...'
+                      : 'Sign In'}
                 </button>
               </form>
 

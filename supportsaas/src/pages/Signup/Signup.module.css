@@ -142,6 +142,16 @@
     margin-bottom: 2rem;
 }
 
+.errorMessage {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    margin-bottom: 1rem;
+}
+
 .title {
     font-size: 1.875rem;
     font-weight: 900;
@@ -445,4 +455,72 @@
     .main {
         padding: 3rem 1rem;
     }
+}
+
+/* Password Strength Meter */
+.strengthMeter {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.strengthBar {
+    flex: 1;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.strengthFill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.strengthLabel {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+/* Field-level error */
+.fieldError {
+    font-size: 0.75rem;
+    color: #ef4444;
+    margin-top: 0.125rem;
+    margin-left: 0.25rem;
+}
+
+/* Input error border */
+.inputError {
+    border-color: rgba(239, 68, 68, 0.5) !important;
+}
+
+.inputError .input {
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+/* Password requirements list */
+.passwordRules {
+    list-style: none;
+    padding: 0;
+    margin: 0.25rem 0 0 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.passwordRules li {
+    font-size: 0.7rem;
+    color: #94a3b8;
+}
+
+.passwordRules li::before {
+    content: '✕ ';
+    color: #ef4444;
+    margin-right: 0.25rem;
 }

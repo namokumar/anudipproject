@@ -188,3 +188,26 @@
         display: none;
     }
 }
+
+.dashboardButton {
+    display: none;
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+    font-size: 0.875rem;
+    font-weight: 700;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(37, 175, 244, 0.2);
+    transition: background-color 0.2s;
+    align-items: center;
+}
+
+.dashboardButton:hover {
+    background-color: var(--primary-hover);
+}
+
+@media (min-width: 768px) {
+    .dashboardButton {
+        display: inline-flex;
+    }
+}
